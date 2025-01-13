@@ -10,7 +10,7 @@ import ContactForm from './ContactForm';
 const Portfolio = () => {
 
   
-  const profilePic = "/Images/Tewoflos.jpg"
+  const profilePic =  "./Images/Tewoflos.jpg"
   // Add floating animation keyframes at component level
   useEffect(() => {
     // Add this at the top of your Portfolio component
@@ -262,7 +262,7 @@ const projects = [
     link: "https://github.com/TheophilusG/Robot-Path-Planning-Project-",
     github: "https://github.com/TheophilusG/Robot-Path-Planning-Project-",
     tags: ["Python", "A*", "Robotics", "AI Algorithms"],
-    image: "/Images/Figure_1.png" // Add your image path here
+    image: "./Images/Figure_1.png" // Add your image path here
   },
   {
     title: "NYC Traffic Report Analysis",
@@ -270,7 +270,7 @@ const projects = [
     link: "https://github.com/TheophilusG/DataBootcamp/blob/05fbeb5cbe685996d9b46acdc68bf6ed03195185/Midterm_Project_NYC_Traffic_Accidents_Analysis.ipynb",
     github: "#",
     tags: ["Data Visualization", "Python", "Data Analysis", "Data Science", "Real World Data"],
-    image: "/Images/NYC traffic proj.png" // Add your image path here
+    image: "./Images/NYC traffic proj.png" // Add your image path here
   },
   {
     title: "Grocery Price Prediction in New York City: A Machine Learning Approach",
@@ -278,7 +278,7 @@ const projects = [
     link: "https://github.com/TheophilusG/DB-Finalproject/blob/a5e0d464e25aa6f8ef77c8d616e49ccd0b238e0a/Final_Project.ipynb",
     github: "#",
     tags: ["Data Visualizations", "Machine Learning", "Data Science"],
-    image: "/Images/groceries.png" // Add your image path here
+    image: "./Images/groceries.png" // Add your image path here
   },
   {
     title: "Kropki Sudoku Solver",
@@ -286,7 +286,7 @@ const projects = [
     link: "https://github.com/TheophilusG/Kropiki-Sudoku-",
     github: "https://github.com/TheophilusG/Kropiki-Sudoku-/blob/main/AI_Project_2_Documentation.pdf",
     tags: ["AI", "Sudoku", "Backtracking", "Python"],
-    image: "/Images/kropki.png" // Add your image path here
+    image: "./Images/kropki.png" // Add your image path here
   },
   {
     title: "Flicker--Photo-Sharing-Web-Application",
@@ -294,7 +294,7 @@ const projects = [
     link: "https://github.com/TheophilusG/Flicker--Photo-Sharing-Web-Application",
     github: "https://github.com/TheophilusG/Flicker--Photo-Sharing-Web-Application",
     tags: ["Flask", "Postgress", "Python", "HTML", "CSS"],
-    image: "/Images/flicker.png" // Add your image path here
+    image: "./Images/flicker.png" // Add your image path here
   }
 ];
 
