@@ -9,13 +9,18 @@ import capstoneImg from '/Images/compu.png';
 import visaLogo from '/Images/VISAinc.png';
 import sternlogo from '/Images/NYUstern.png';
 import skyITlogo from '/Images/skyIT.jpeg';
+import nsbeLogo from '/Images/NSBE.png';
+import nychaqLogo from '/Images/nychaq.png';
+import IBMCALLlogo from '/Images/IBMcall.png';
+import stlogo from '/Images/stuleader.png';
+
 const sectionOrder = [
   { id: 'who', label: 'Who I Am' },
-  { id: 'domains', label: 'What I Work On' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'writing', label: 'Writing' },
+  { id: 'domains', label: 'What I Work On' },
   { id: 'contact', label: 'Contact' }
 ];
 
@@ -97,12 +102,6 @@ const Portfolio = () => {
     return () => clearTimeout(timeout);
   }, [dynamicDisplay, isDeleting, phraseIndex, phase]);
 
-  const skipThreeD = () => {
-    setMotionSuppressed(true);
-    const target = document.getElementById('portfolio-tabs');
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   useEffect(() => {
     if (activeSection !== 'projects') return undefined;
     const ticker = setInterval(() => {
@@ -123,6 +122,8 @@ const Portfolio = () => {
         return <ProjectSpotlight project={activeProject} projectsList={projects} />;
       case 'experience':
         return <ExperienceSpotlight experiences={experiences} />;
+      case 'leadership':
+        return <LeadershipSpotlight items={leadership} />;
       default:
         return <SystemsMapPanel activeNode={activeNode} motionSuppressed={motionSuppressed} />;
     }
@@ -134,12 +135,6 @@ const Portfolio = () => {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-xs uppercase tracking-[0.35em] text-[#bbbbbb]">
           <span className="font-semibold text-white">Tewoflos Girmay</span>
           <div className="flex items-center gap-4">
-            <button
-              onClick={skipThreeD}
-              className="rounded-full border border-white/20 px-3 py-1 text-[11px] tracking-[0.4em] text-[#c1c1c1] transition hover:border-white/70 hover:text-white"
-            >
-              Skip 3D
-            </button>
             <a href="https://github.com/TheophilusG" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[#bbbbbb] transition hover:text-white">
               <Github size={18} />
             </a>
@@ -174,9 +169,6 @@ const Portfolio = () => {
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-white transition hover:border-white/70"
               >
                 Resume <ExternalLink size={14} />
-              </a>
-              <a href="mailto:tfg7297@nyu.edu" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-white transition hover:border-white/70">
-                Contact <Mail size={14} />
               </a>
             </div>
           </div>
@@ -469,7 +461,7 @@ const ExperienceSpotlight = ({ experiences }) => {
         {experiences.map((experience, idx) => (
           <div
             key={experience.org}
-            className={`absolute flex h-24 w-32 items-center justify-center rounded-3xl border border-white/15 bg-white/5 p-4 transition-opacity duration-700 ${
+            className={`absolute flex h-40 w-52 items-center justify-center rounded-3xl border border-white/15 bg-white/5 p-8 transition-opacity duration-700 ${
               idx === activeIdx ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -483,6 +475,46 @@ const ExperienceSpotlight = ({ experiences }) => {
       </div>
       <div className="text-center text-xs uppercase tracking-[0.4em] text-white/60">
         {experiences[activeIdx]?.org} — {experiences[activeIdx]?.role}
+      </div>
+    </div>
+  );
+};
+
+const LeadershipSpotlight = ({ items }) => {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    if (!items?.length) return undefined;
+    const ticker = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % items.length);
+    }, 2800);
+    return () => clearInterval(ticker);
+  }, [items]);
+
+  const active = items[activeIdx];
+
+  return (
+    <div className="relative z-10 flex h-full flex-col justify-center gap-5 text-white">
+      <div className="text-[11px] uppercase tracking-[0.4em] text-[#b5b5b5]">Leadership Highlights</div>
+      <div className="relative flex flex-1 items-center justify-center">
+        {items.map((entry, idx) => (
+          <div
+            key={entry.title}
+            className={`absolute flex h-44 w-44 items-center justify-center rounded-full border border-white/20 bg-white/5 p-7 transition-opacity duration-700 ${
+              idx === activeIdx ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {entry.logo ? (
+              <img src={entry.logo} alt={`${entry.title} mark`} className="max-h-full max-w-full object-contain" />
+            ) : (
+              <span className="text-center text-[10px] uppercase tracking-[0.35em] text-white/70">{entry.event}</span>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="text-center space-y-1">
+        <p className="text-lg font-semibold">{active?.title}</p>
+        <p className="text-sm uppercase tracking-[0.35em] text-[#cecece]">{active?.event}</p>
       </div>
     </div>
   );
@@ -661,29 +693,33 @@ const experiences = [
 ];
 
 const leadership = [
-    {
+  {
     title: 'National Society of Black Engineers — President & Honeywell Scholar',
     description: 'Lead 50+ member organization, coordinating technical workshops and industry partnerships.',
     event: 'NSBE',
-    period: 'Sep 2023 – Present'
+    period: 'Sep 2023 – Present',
+    logo: nsbeLogo
   },
   {
     title: 'NYCHAQATHON - Quantum Portfolio Optimization — 2nd Place',
     description: 'Led a four-person team to the highest risk-adjusted return using factor models, Python, and SQL.',
     event: 'Competition',
-    period: 'Oct 2024'
+    period: 'Oct 2024',
+    logo: nychaqLogo
   },
   {
     title: 'IBM Call for Code Global Competition — Finalist',
     description: 'Recognized for applied engineering impact in a global sustainability challenge.',
     event: 'IBM Call for Code',
-    period: 'Oct 2021'
+    period: 'Oct 2021',
+    logo: IBMCALLlogo
   },
-    {
+  {
     title: 'Resident Assistant — NYU Abu Dhabi',
     description: 'Student leader fostering community and supporting residential life for 40+ students.',
     event: 'NYU Residential Life',
-    period: 'Aug 2023 - Present'
+    period: 'Aug 2023 - Present',
+    logo: stlogo
   }
 ];
 
