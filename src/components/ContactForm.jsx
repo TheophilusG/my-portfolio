@@ -14,7 +14,7 @@ const ContactForm = () => {
 
     try {
       await emailjs.sendForm(
-        'service_7jrvf4f', // Replace with your EmailJS service ID
+        'service_j0wa25s', // Replace with your EmailJS service ID
         'template_m4auzhr', // Replace with your EmailJS template ID
         form.current,
         'csgVpkAu-q80rb4mO' // Replace with your EmailJS public key
@@ -31,71 +31,80 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="mb-24 scroll-mt-20">
-      <div className="flex items-center mb-8">
-        <Mail className="mr-3 text-blue-600" />
-        <h3 className="text-3xl font-bold">Contact Me</h3>
+    <section id="contact" className="py-24 scroll-mt-20">
+      <div className="flex items-center gap-3">
+        <div className="rounded-full border border-white/10 bg-white/5 p-3 text-white">
+          <Mail />
+        </div>
+        <div>
+          <p className="text-sm uppercase tracking-[0.5em] text-slate-400">Direct channel</p>
+          <h3 className="text-3xl font-semibold text-white">Let's connect.</h3>
+        </div>
       </div>
-      <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all">
-        <form ref={form} onSubmit={handleSubmit} className="space-y-6">
-          <div className="relative group">
-            <label className="block text-gray-700 mb-2 font-medium">Name</label>
-            <input
-              type="text"
-              name="user_name"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-              required
-            />
-            <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-full" />
+      <div className="mt-12 rounded-[2.5rem] border border-white/10 bg-[#050608] p-10">
+        <form ref={form} onSubmit={handleSubmit} className="space-y-8">
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-[0.4em] text-slate-400">Name</label>
+              <input
+                type="text"
+                name="user_name"
+                className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-[0.4em] text-slate-400">Email</label>
+              <input
+                type="email"
+                name="user_email"
+                className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                placeholder="you@email.com"
+                required
+              />
+            </div>
           </div>
 
-          <div className="relative group">
-            <label className="block text-gray-700 mb-2 font-medium">Email</label>
-            <input
-              type="email"
-              name="user_email"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-              required
-            />
-            <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-full" />
-          </div>
-
-          <div className="relative group">
-            <label className="block text-gray-700 mb-2 font-medium">Message</label>
+          <div className="space-y-2">
+            <label className="text-xs uppercase tracking-[0.4em] text-slate-400">Mission brief</label>
             <textarea
               name="message"
-              className="w-full p-3 border border-gray-300 rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
+              className="h-40 w-full resize-none rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+              placeholder="Share the challenge, objectives, or research prompt…"
               required
             />
-            <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-full" />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-blue-600 text-white px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center
-              ${loading ? 'bg-blue-400 cursor-not-allowed' : 'hover:bg-blue-700 hover:transform hover:scale-105'}
+            className={`w-full rounded-2xl border border-white/20 px-6 py-4 text-sm font-semibold uppercase tracking-[0.5em] text-white transition
+              ${loading ? 'cursor-not-allowed opacity-60' : 'hover:border-white/50'}
             `}
           >
             {loading ? (
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+              <div className="mx-auto flex items-center gap-3 text-slate-300">
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-transparent" />
+                Sending…
+              </div>
             ) : (
-              <>
-                Send Message
-                <Send size={16} className="ml-2" />
-              </>
+              <span className="flex items-center justify-center gap-2">
+                Send
+                <Send size={16} />
+              </span>
             )}
           </button>
 
           {status === 'success' && (
-            <div className="text-green-500 text-center animate-fade-in">
-              Message sent successfully!
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-4 text-center text-sm text-slate-200">
+              Message sent. I will respond shortly.
             </div>
           )}
-          
+
           {status === 'error' && (
-            <div className="text-red-500 text-center animate-fade-in">
-              Failed to send message. Please try again.
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-4 text-center text-sm text-red-200">
+              Transmission failed — please retry.
             </div>
           )}
         </form>
