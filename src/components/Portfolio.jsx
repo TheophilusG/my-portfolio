@@ -148,7 +148,7 @@ const Portfolio = () => {
       <main>
         <section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-6 pb-16 pt-14 lg:flex-row">
           <div className="lg:w-1/2">
-            <p className="text-xs uppercase tracking-[0.4em] text-[#9a9a9a]">Software Engineer · Systems & Infrastructure</p>
+            <p className="text-xs uppercase tracking-[0.4em] text-[#9a9a9a]">Software Engineer · Systems/Data Engineer · AML Researcher </p>
             <h1 className="mt-6 text-4xl font-semibold text-white md:text-5xl">
               <span className="block">{staticDisplay}</span>
               <span className="mt-2 block min-h-[1.6em] text-[#d9d9d9]">
@@ -413,7 +413,7 @@ const ProfileSpotlight = () => (
       <p className="text-sm text-[#cecece]">Software engineer/Researcher</p>
     </div>
     <p className="max-w-xs text-xs text-[#d5d5d5]">
-      I love building impactfull things.
+      I love building impactful things.
     </p>
   </div>
 );

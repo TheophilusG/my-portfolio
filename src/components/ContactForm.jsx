@@ -71,7 +71,7 @@ const ContactForm = () => {
             <textarea
               name="message"
               className="h-40 w-full resize-none rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
-              placeholder="Share the challenge, objectives, or research prompt…"
+              placeholder="Share your message here..."
               required
             />
           </div>
