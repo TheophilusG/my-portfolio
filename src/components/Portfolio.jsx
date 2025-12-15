@@ -26,7 +26,8 @@ const sectionOrder = [
 
 
 const staticHeadline = 'Hi I am Teo!';
-const dynamicPhrases = ["I'm a Developer.", "I'm a Problem Solver.", "I'm a lifelong learner."];
+const dynamicPhrases = ["I'm a Developer.", "I'm an aspiring polymath.", "I'm a Problem Solver.", "I'm a lifelong learner.", "I'm a tech enthusiast."];
+
 
 const Portfolio = () => {
   const [motionSuppressed, setMotionSuppressed] = useState(false);
@@ -413,7 +414,7 @@ const ProfileSpotlight = () => (
       <p className="text-sm text-[#cecece]">Software engineer/Researcher</p>
     </div>
     <p className="max-w-xs text-xs text-[#d5d5d5]">
-      I love building impactful things.
+      I love building impactful things. 
     </p>
   </div>
 );
